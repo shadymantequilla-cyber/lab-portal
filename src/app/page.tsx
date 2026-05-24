@@ -1,24 +1,7 @@
 "use client";
-import { Suspense } from "react"; // 1. Import Suspense
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabase";
-
-// 2. Rename your main logic to 'ReceiveContent'
-function ReceiveContent() {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  // ... (keep all your existing useEffect and fetch logic here)
-  return <div>{/* Your UI */}</div>;
-}
-
-// 3. Export a new function that wraps the content in Suspense
-export default function ReceivePage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ReceiveContent />
-    </Suspense>
-  );
+import { useState } from "react";
+import { supabase } from "../utils/supabase";
+import QRCode from "react-qr-code";
 }
 
 export default function LabPortal() {
