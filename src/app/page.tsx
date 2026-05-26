@@ -35,7 +35,7 @@ export default function LabPortal() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-100 p-4 md:p-8 text-slate-900">
+    <main className="min-h-screen bg-[#F5F5F0] p-4 md:p-8 text-[#2D3748]">
       {/* This Style tag hides the form when you click "Print" */}
       <style jsx global>{`
         @media print {
@@ -55,12 +55,12 @@ export default function LabPortal() {
       <div className="max-w-md mx-auto">
         {/* Branding Section */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mb-3 shadow-lg">
+          <div className="w-20 h-20 bg-[#4A7C59] rounded-full flex items-center justify-center mb-3 shadow-lg">
              {/* Replace this span with <img src="/your-logo.png" /> later */}
              <span className="text-white font-bold text-2xl">LAB</span>
           </div>
-          <h1 className="text-3xl font-bold text-blue-900 text-center">Client Portal</h1>
-          <p className="text-slate-500 text-sm">Sample Entry & Pre-Labeling</p>
+          <h1 className="text-3xl font-bold text-[#2D3748] text-center">Client Portal</h1>
+          <p className="text-stone-500 text-sm">Sample Entry & Pre-Labeling</p>
         </div>
         
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4 mb-8">
@@ -69,7 +69,7 @@ export default function LabPortal() {
               <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Sample Name</label>
               <input 
                 type="text" 
-                className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none" 
+                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#4A7C59] outline-none" 
                 value={sampleName}
                 onChange={(e) => setSampleName(e.target.value)}
                 placeholder="e.g. Raw Almonds"
@@ -80,7 +80,7 @@ export default function LabPortal() {
               <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Lot Number</label>
               <input 
                 type="text" 
-                className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none" 
+                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#4A7C59] outline-none" 
                 value={lotNumber}
                 onChange={(e) => setLotNumber(e.target.value)}
                 placeholder="e.g. LOT-2024-001"
@@ -105,12 +105,12 @@ export default function LabPortal() {
           {/* Analysis Selection: Critical for LIMS Integration */}
           <div className="pt-2">
             <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Requested Analysis</label>
-            <div className="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded border">
+            <div className="grid grid-cols-2 gap-2 bg-stone-50 p-3 rounded border">
               {["Salmonella", "Listeria", "pH Level", "APC / Aerobic", "E. coli", "Yeast & Mold - Petrifilm", "Yeast & Mold - Pour Plate", "Coliform - Petrifilm", "Coliform - Pour Plate", "Water Activity"].map((test) => (
                 <label key={test} className="flex items-center space-x-2 text-sm cursor-pointer hover:bg-white p-1 rounded transition-all">
                   <input 
                     type="checkbox" 
-                    className="w-4 h-4 rounded text-blue-600 border-slate-300"
+                    className="w-4 h-4 rounded accent-[#4A7C59] border-stone-300"
                     checked={selectedTests.includes(test)}
                     onChange={(e) => {
                       if(e.target.checked) setSelectedTests([...selectedTests, test]);
@@ -123,15 +123,15 @@ export default function LabPortal() {
             </div>
           </div>
 
-          <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-md font-bold transition-all shadow-md">
+          <button type="submit" className="w-full bg-[#4A7C59] hover:bg-[#3a6347] text-white py-3 rounded-md font-bold transition-all shadow-md">
             Generate Lab ID & Sticker
           </button>
         </form>
 
         {/* The Sticker: Styled for 2x4 Thermal Printers */}
         {savedId && (
-          <div className="print-section mt-8 bg-white p-6 rounded-lg shadow-xl border-2 border-dashed border-blue-400 text-center">
-            <p className="text-[10px] font-bold text-blue-600 uppercase mb-1">Laboratory Sample Sticker</p>
+          <div className="print-section mt-8 bg-white p-6 rounded-lg shadow-xl border-2 border-dashed border-[#4A7C59] text-center">
+            <p className="text-[10px] font-bold text-[#4A7C59] uppercase mb-1">Laboratory Sample Sticker</p>
             <h2 className="text-xl font-black text-slate-800 mb-2">{sampleName}</h2>
             
             <div className="flex justify-center mb-3">
