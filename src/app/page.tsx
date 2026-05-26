@@ -55,9 +55,8 @@ export default function LabPortal() {
       <div className="max-w-md mx-auto">
         {/* Branding Section */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-20 h-20 bg-[#4A7C59] rounded-full flex items-center justify-center mb-3 shadow-lg">
-             {/* Replace this span with <img src="/your-logo.png" /> later */}
-             <span className="text-white font-bold text-2xl">LAB</span>
+          <div className="w-24 h-24 rounded-full overflow-hidden mb-3 shadow-lg">
+            <img src="/logo.jpg" alt="Lab Logo" className="w-full h-full object-cover" />
           </div>
           <h1 className="text-3xl font-bold text-[#2D3748] text-center">Client Portal</h1>
           <p className="text-stone-500 text-sm">Sample Entry & Pre-Labeling</p>
