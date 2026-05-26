@@ -1,14 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
-import { supabase } from "../../utils/supabase"; 
+import { useState, useEffect, Suspense } from "react";
+import { supabase } from "../../utils/supabase";
 import { useSearchParams } from "next/navigation";
 
-export default function ReceivePage() {
+function ReceiveContent() {
   const [sample, setSample] = useState<any>(null);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
-const id = searchParams.get("id");
+  const id = searchParams.get("id");
 
 useEffect(() => {
   if (id) {
@@ -79,5 +79,13 @@ useEffect(() => {
         )}
       </div>
     </main>
+  );
+}
+
+export default function ReceivePage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-slate-50 p-8 flex items-center justify-center"><p className="text-slate-500">Loading...</p></main>}>
+      <ReceiveContent />
+    </Suspense>
   );
 }
