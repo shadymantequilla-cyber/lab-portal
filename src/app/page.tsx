@@ -106,7 +106,7 @@ export default function LabPortal() {
           <div className="pt-2">
             <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Requested Analysis</label>
             <div className="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded border">
-              {["Salmonella", "Listeria", "pH Level", "APC / Aerobic", "E. coli"].map((test) => (
+              {["Salmonella", "Listeria", "pH Level", "APC / Aerobic", "E. coli", "Yeast & Mold - Petrifilm", "Yeast & Mold - Pour Plate", "Coliform - Petrifilm", "Coliform - Pour Plate", "Water Activity"].map((test) => (
                 <label key={test} className="flex items-center space-x-2 text-sm cursor-pointer hover:bg-white p-1 rounded transition-all">
                   <input 
                     type="checkbox" 
