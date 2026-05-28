@@ -4,6 +4,7 @@ import { supabase } from "../utils/supabase";
 import QRCode from "react-qr-code";
 
 export default function LabPortal() {
+  const [clientName, setClientName] = useState("");
   const [sampleName, setSampleName] = useState("");
   const [lotNumber, setLotNumber] = useState("");
   const [matrix, setMatrix] = useState("Powder");
@@ -16,9 +17,10 @@ export default function LabPortal() {
     // Ensure you ran: ALTER TABLE samples ADD COLUMN tests text[]; in Supabase SQL Editor
     const { data, error }: { data: any; error: any } = await supabase
       .from("samples")
-      .insert([{ 
-        sample_name: sampleName, 
-        lot_number: lotNumber, 
+      .insert([{
+        client_name: clientName,
+        sample_name: sampleName,
+        lot_number: lotNumber,
         matrix: matrix,
         status: "Pending",
         tests: selectedTests // This connects to your LIMS test master data
@@ -64,6 +66,17 @@ export default function LabPortal() {
         
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4 mb-8">
           <div className="grid grid-cols-1 gap-4">
+            <div>
+              <label className="block text-xs font-bold uppercase text-stone-500 mb-1">Client Name</label>
+              <input
+                type="text"
+                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#4A7C59] outline-none"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+                placeholder="e.g. Acme Foods Inc."
+                required
+              />
+            </div>
             <div>
               <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Sample Name</label>
               <input 
@@ -131,6 +144,7 @@ export default function LabPortal() {
         {savedId && (
           <div className="print-section mt-8 bg-white p-6 rounded-lg shadow-xl border-2 border-dashed border-[#4A7C59] text-center">
             <p className="text-[10px] font-bold text-[#4A7C59] uppercase mb-1">Laboratory Sample Sticker</p>
+            <p className="text-[11px] text-slate-500 mb-1">Client: {clientName}</p>
             <h2 className="text-xl font-black text-slate-800 mb-2">{sampleName}</h2>
             
             <div className="flex justify-center mb-3">
